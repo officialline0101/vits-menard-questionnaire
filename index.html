@@ -266,6 +266,15 @@
     <div class="container">
         <h1>メナード推しメイクアンケート</h1>
         <div class="info-text">簡単なアンケートになります❤️<br>是非プレゼントをゲットしてくださいね♪</div>
+
+        <div class="label">メイクする時のこだわりはなんですか？</div>
+        <div class="demand-buttons">
+            <button type="button" id="onedemand" onclick="selectdemand(this)">リップ</button>
+            <button type="button" id="twodemand" onclick="selectdemand(this)">アイブロウ</button>
+            <button type="button" id="threedemand" onclick="selectdemand(this)">マスカラ/アイライン</button>
+            <button type="button" id="fourdemand" onclick="selectdemand(this)">その他</button>
+        </div>
+
         <div class="label">お名前(漢字フルネーム)</div>
         <textarea id="message" rows="1" placeholder="入力してください"></textarea> <!-- メッセージ入力フィールド -->
 
@@ -288,13 +297,6 @@
             <button type="button" id="twelvepriority" onclick="selectpriority(this)">12月</button>
         </div>
 
-        <div class="label">メイクする時のこだわりはなんですか？</div>
-        <div class="demand-buttons">
-            <button type="button" id="onedemand" onclick="selectdemand(this)">リップ</button>
-            <button type="button" id="twodemand" onclick="selectdemand(this)">アイブロウ</button>
-            <button type="button" id="threedemand" onclick="selectdemand(this)">マスカラ/アイライン</button>
-        </div>
-
         <button class="submit-button" onclick="submitForm()">アンケート送信</button> <!-- フォーム送信ボタン -->
     </div>
 
@@ -306,7 +308,7 @@
         // LIFF初期化
         document.addEventListener('DOMContentLoaded', function () {
             liff.init({
-                liffId: '2005254357-zKma9BZk' // ここにあなたのLIFF IDを入力
+                liffId: '2006905761-Kw2oZRxB' // ここにあなたのLIFF IDを入力
             }).then(() => {
                 // LIFF初期化成功時の処理
                 console.log('LIFF初期化成功');
@@ -389,7 +391,7 @@
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `≪アンケート≫\n【お名前(漢字フルネーム)】\n・${formData.message}\n\n【お名前(ふりがな)】\n・${formData.message2}\n\n【誕生月】\n・${formData.priorityCount}\n\n【メイクする時のこだわりはなんですか？】\n・${formData.demandCount}`
+                text: `≪アンケート≫\n【メイクする時のこだわりはなんですか？】\n・${formData.demandCount}\n\n【お名前(漢字フルネーム)】\n・${formData.message}\n\n【お名前(ふりがな)】\n・${formData.message2}\n\n【誕生月】\n・${formData.priorityCount}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('ご記入ありがとうございます！');
