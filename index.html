@@ -275,6 +275,9 @@
             <button type="button" id="fourdemand" onclick="selectdemand(this)">その他</button>
         </div>
 
+        <div class="label">【その他】を選択された方はご入力ください</div>
+        <textarea id="message3" rows="1" placeholder="入力してください"></textarea> <!-- メッセージ入力フィールド -->
+
         <div class="label">お名前(漢字フルネーム)</div>
         <textarea id="message" rows="1" placeholder="入力してください"></textarea> <!-- メッセージ入力フィールド -->
 
@@ -354,44 +357,46 @@
         function submitForm() {
             const message = document.getElementById('message').value;
             const message2 = document.getElementById('message2').value;
+            const message3 = document.getElementById('message3').value;
             priorityCount: priorityCount;
             demandCount: demandCount;
 
             const formData = {
                 message,
                 message2,
+                message3,
                 priorityCount,
                 demandCount,
             };
 
             // フォームデータのチェック
             if (!formData.message) {
-                alert('ご来店日を入力してください。');
+                alert('お名前(漢字フルネーム)を入力してください。');
                 return;
             }
 
             // フォームデータのチェック
             if (!formData.message2) {
-                alert('お名前を入力してください。');
+                alert('お名前(ふりがな)を入力してください。');
                 return;
             }
 
             // フォームデータのチェック
             if (!formData.priorityCount) {
-                alert('ご職業をご選択ください。');
+                alert('誕生月をご選択ください。');
                 return;
             }
 
             // フォームデータのチェック
             if (!formData.demandCount) {
-                alert('来店動機をご選択ください。');
+                alert('メイクする時のこだわりはなんですかをご選択ください。');
                 return;
             }
 
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `≪アンケート≫\n【メイクする時のこだわりはなんですか？】\n・${formData.demandCount}\n\n【お名前(漢字フルネーム)】\n・${formData.message}\n\n【お名前(ふりがな)】\n・${formData.message2}\n\n【誕生月】\n・${formData.priorityCount}`
+                text: `≪アンケート≫\n【メイクする時のこだわりはなんですか？】\n・${formData.demandCount}\n\n【その他】\n・${formData.message3}\n\n【お名前(漢字フルネーム)】\n・${formData.message}\n\n【お名前(ふりがな)】\n・${formData.message2}\n\n【誕生月】\n・${formData.priorityCount}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('ご記入ありがとうございます！');
